@@ -1,0 +1,27 @@
+// Maps 
+
+package main
+
+import "log"
+
+
+type User struct{
+	FirstName string
+	LastName string
+}
+
+func main () {
+	// Kita gunakan type User
+	myMap := make(map[string]User)
+
+	me := User {
+		FirstName: "Winaldo",
+		LastName: "Manurung",
+	}
+
+	// Kita assign ke myMap map, dengan key "me" dan value me
+	myMap["me"] = me
+
+	log.Println(myMap["me"].FirstName)
+
+}

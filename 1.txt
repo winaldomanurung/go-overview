@@ -1,0 +1,32 @@
+// selalu diawali package, lalu kasih nama packagenya. Dalam hal ini: main
+package main
+
+import "fmt"
+
+// every go program at least has one function named main
+func main() {
+	// fmt is format, dia akan langsung import library 'fmt' secara otomatis
+	fmt.Println("Hello world!")
+
+	// kita beri nama variable (whatToSay) dan typenya (string)
+	var whatToSay string
+	// kita tambah variable lain
+	var i int
+
+	// kita kasih valuenya
+	whatToSay = "Goodbye, cruel world"
+	fmt.Println(whatToSay)
+
+	i = 7
+	fmt.Println("i is set to:", i)
+
+	// call saySomething and execute it. Whatever it returns, assign it to whatWasSaid
+	whatWasSaid, theOtherThingThatWasSaid := saySomething()
+	fmt.Println("The function returned:", whatWasSaid, theOtherThingThatWasSaid)
+	
+}
+
+// ini maksudnya kita akan return string
+func saySomething () (string, string) {
+	return "something", "else"
+}

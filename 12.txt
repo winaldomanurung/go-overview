@@ -1,0 +1,33 @@
+//Channels
+
+package main
+
+import (
+	"log"
+
+	"github.com/winaldomanurung/gochannels/helpers"
+)
+
+// kita buat function yang menerima argument bernama intChan dengan type channel of int and doesnt return anything
+func CalculateValue (intChan chan int){
+	// disini kita ingin membuat random number dan do something with it, kita buat random numbernya di helpers function
+	const numPool = 1000
+	randomNumber := helpers.RandomNumber(numPool)
+
+	// lalu kita pass randomNumber ke channel
+	intChan <- randomNumber
+}
+
+func main() {
+	// kita buat channle, a place to send information which will be received in one or more places in my program, and that channel can only HOLD IT.
+	intChan := make(chan int)
+	defer close(intChan)
+
+	// kita buat go, in front of the call to the function that you want to call. And that turns into a go routine. 
+	go CalculateValue(intChan)
+
+	// lalu kita listen response dari channel tsb
+	num := <-intChan
+	log.Println(num)
+}
+
